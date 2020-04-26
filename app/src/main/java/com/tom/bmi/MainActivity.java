@@ -1,11 +1,13 @@
 package com.tom.bmi;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
         float height = Float.parseFloat(h);
         float bmi = weight / (height * height);
         Log.d("BMI", String.valueOf(bmi));
+        Toast.makeText(this, String.valueOf(bmi), Toast.LENGTH_LONG).show();
+        new AlertDialog.Builder(this)
+                .setMessage(bmi + "")
+                .setTitle("Your BMI")
+                .setPositiveButton("OK", null)
+                .setNeutralButton("Cancel", null)
+                .show();
     }
 
     private void findViews() {
